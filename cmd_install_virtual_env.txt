@@ -1,0 +1,13 @@
+créer un dossier sur le bureau "VisionIndustrielle"
+ouvrir le dossier + shit clique droit + ouvrir PowerShell
+
+PS Microsoft.PowerShell.Core\FileSystem::\\iut.bx\Personnels\Home\acailly\Desktop\VisionIndustrielle>
+
+Commande : 
+> C:\python38-64\python.exe -m venv opencv_env
+> .\opencv_env\Scripts\activate
+(opencv_env) PS Microsoft.PowerShell.Core\FileSystem::\\iut.bx\Personnels\Home\acailly\Desktop\VisionIndustrielle>
+
+>python -m pip install --upgrade pip
+>pip install opencv-python
+>pip install matplotlib
