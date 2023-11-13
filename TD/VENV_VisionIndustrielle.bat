@@ -1,13 +1,23 @@
 @echo off
+
 set "venv_path=%UserProfile%\Desktop\VisionIndustrielle\env_opencv"
-
-cd %UserProfile%\Desktop
-
 echo Dossier d'installation de l'environnement python:
 echo %venv_path%
 
+set "python_executable=%~1"
 REM Assurez-vous que le chemin vers l'exécutable Python est correct.
-set "python_executable=python"
+if exist "%python_executable%" (
+    echo Localisation de python : %python_executable%
+) else (
+    echo "Commande python par defaut"
+    set "python_executable=python"
+)
+
+if not exist %python_executable% (
+    echo python not found
+    pause
+    Exit /b
+)
 
 %python_executable% --version
 
@@ -29,6 +39,7 @@ if exist "%venv_path%\Scripts\activate.bat" (
     pip --version
     python -m pip install --upgrade pip
     python -m pip install opencv-python matplotlib
+    python -m pip install ipykernel
 )
 else (
     echo L'environnement virtuel n'est pas activable : %venv_path%\Scripts\activate.bat
