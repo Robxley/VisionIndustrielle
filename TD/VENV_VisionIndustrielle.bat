@@ -10,7 +10,7 @@ if exist "%python_executable%" (
     echo Localisation de python : %python_executable%
 ) else (
     echo "Commande python par defaut"
-    set "python_executable=python"
+    set "python_executable=C:\python38-64\python.exe"
 )
 
 if not exist %python_executable% (
@@ -38,8 +38,7 @@ if exist "%venv_path%\Scripts\activate.bat" (
     .\Scripts\activate.bat
     pip --version
     python -m pip install --upgrade pip
-    python -m pip install opencv-python matplotlib
-    python -m pip install ipykernel
+    python -m pip install opencv-python matplotlib ipykernel
 )
 else (
     echo L'environnement virtuel n'est pas activable : %venv_path%\Scripts\activate.bat

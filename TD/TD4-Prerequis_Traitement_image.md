@@ -23,9 +23,8 @@ Documentation : https://docs.python.org/fr/3/tutorial/venv.html
     - Mise à jour de l'installeur de packages ```pip``` : 
         > ```python -m pip install --upgrade pip``` 
 
-    - Installer les librairies/packages ```opencv``` et ```matplotlib``` (avec cmd.exe)
-        > ```pip install opencv-python```  
-        > ```pip install matplotlib```  
+    - Installer les librairies/packages ```opencv```, ```matplotlib``` et ```ipykernel``` (avec cmd.exe)
+        > ```pip install opencv-python ipykernel matplotlib```  
 
 4.	Ouvrer le dossier VisionIndustrielle dans VSCode.
 5.	Créer un Jupyter notebook « TD4-Traitement_image.ipynb »

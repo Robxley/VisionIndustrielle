@@ -6,7 +6,7 @@ Write-Host "Dossier d'installation de l'environnement python:"
 Write-Host $venv_path
 
 # Assurez-vous que le chemin vers l'exécutable Python est correct.
-$python_executable = "python"
+$python_executable = "C:\python38-64\python.exe"
 
 & $python_executable --version
 
@@ -27,7 +27,7 @@ if (Test-Path (Join-Path $venv_path "Scripts\activate.bat")) {
     .\Scripts\activate.bat
     pip --version
     python -m pip install --upgrade pip
-    python -m pip install opencv-python matplotlib
+    python -m pip install opencv-python matplotlib ipykernel
     Write-Host "Creation de l'environnement virtuel terminee"
 } else {
     Write-Host "L'environnement virtuel n'est pas activable : $($venv_path)\Scripts\activate.bat"

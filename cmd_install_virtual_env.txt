@@ -9,5 +9,4 @@ Commande :
 (opencv_env) PS Microsoft.PowerShell.Core\FileSystem::\\iut.bx\Personnels\Home\acailly\Desktop\VisionIndustrielle>
 
 >python -m pip install --upgrade pip
->pip install opencv-python
->pip install matplotlib
+>pip install opencv-python matplotlib ipykernel
