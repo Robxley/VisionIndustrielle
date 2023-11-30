@@ -1,0 +1,36 @@
+ Program
+   Robot Program
+     Init main
+       Activer la main
+       Déplacement main60% (1)
+     init vars
+       offest_rx≔3.14
+       topz≔0.280
+       offset≔0.250
+     MoveJ
+       start_pos
+     init prod
+       EYE stop production
+       EYE start_production 4875
+       erreur_eye≔EYECheckLastError()
+       If erreur_eye≠0
+         Popup
+         Halt
+     Loop
+       prod
+         EYE get_part
+         If EYEPos≟p[0,0,0,0,0,0]
+           Halt
+         EYEPos≔pose_add(EYEPos,p[0,0,0,0,0,0])
+         EYEPos≔pose_add(EYEPos, p[0,0,0,offest_rx,0,0])
+         EYEPosTop≔pose_add(EYEPos, p[0,0,topz,0,0,0])
+         EYEPosOffset≔pose_add(EYEPos, p[0,0,offset,0,0,0])
+         MoveJ
+           EYEPosTop
+           EYEPosOffset
+         Déplacement main67% (1)
+         MoveL
+           EYEPosTop
+           pos_boite
+         Déplacement main60% (1)
+     EYE stop production
