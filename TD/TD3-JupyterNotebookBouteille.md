@@ -13,7 +13,7 @@ Vous devez concevoir un système de vision pour inspecter des bouteilles décor�
 </ul>
 </td>
 <td>
-<img src="images/scan_bouteille.png" alt="Bouteille décorée" width="50">
+<img src="assets/scan_bouteille.png" alt="Bouteille décorée" width="50">
 </td>
 </tr>
 </table>
