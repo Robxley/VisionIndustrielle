@@ -33,6 +33,13 @@ import numpy as np
 # 3. Affichez les dimensions de l'image à l'aide de l'attribut `.shape` et identifiez les indices correspondant aux lignes et colonnes.
 # 
 
+# %%
+fruits_gray = cv2.imread("images/fruits.jpg", cv2.IMREAD_GRAYSCALE) # lecture de l'image
+if fruits_gray is None:     # si l'image n'a pas pu etre chargée
+    print("❌ Erreur: l'image n'a pas pu être chargée")
+else:
+    print("Les dimensions de l'image sont (nombre de lignes, nombre de colonnes):", fruits_gray.shape)
+
 # %% [markdown]
 # ### 3. Affichage d'une image avec le package Matplotlib
 # 
@@ -40,6 +47,26 @@ import numpy as np
 # 2. Expérimentez en modifiant le paramètre `cmap="gray"` pour observer les effets sur l'affichage (référez-vous à la documentation).
 # 3. Créez une fonction nommée `implot` afin de simplifier l'affichage des images dans vos analyses futures.
 # 
+
+# %%
+# affichage de l'image grise
+from matplotlib import pyplot as plt
+plt.imshow(fruits_gray, cmap="gray")
+plt.title('Fruits en niveau de gris')
+plt.axis('off')
+plt.show()
+
+
+# %%
+# création d'une fonction implot réutilisable autant de fois que nécessaire
+def implot(image, title):
+    plt.imshow(image, cmap="gray")
+    plt.title(title)
+    plt.axis('off')
+    plt.show()
+
+# utilisation de la fonction implot pour ré-afficher l'image 
+implot(fruits_gray, "Fruits en niveau de gris avec la fonction implot")
 
 # %% [markdown]
 # ### 4. Image en couleur
@@ -51,6 +78,15 @@ import numpy as np
 # 5. Documentez-vous sur ce qu'est un filtre de Bayer et son rôle dans les capteurs d'image.
 # 
 
+# %%
+fruits_bgr = cv2.imread("images/fruits.jpg", cv2.IMREAD_UNCHANGED) 
+if fruits_bgr is None:     # si l'image n'a pas pu etre chargée
+    print("❌ Erreur: l'image n'a pas pu être chargée")
+else:
+    print("Les dimensions de l'image sont (nombre de lignes, nombre de colonnes, nombre de couleurs):", fruits_bgr.shape)
+    
+implot(fruits_bgr, "Fruits en couleur")
+
 # %% [markdown]
 # ### 5. Affichage de l'image en couleur avec OpenCV
 # 
@@ -60,9 +96,8 @@ import numpy as np
 # 
 
 # %%
-def imshow_cv(image,  winname = 'Image OpenCV', swapBR = False):
-    if swapBR:
-        image = image[...,[2,1,0]]
+# fonction pour afficher une image en format opencv
+def imshow_cv(image,  winname = 'Image OpenCV'):
     cv2.imshow(winname, image)
     while(True):        # boucle d'affichage de l'image
         k = cv2.waitKey(60)
@@ -74,12 +109,25 @@ def imshow_cv(image,  winname = 'Image OpenCV', swapBR = False):
             break
     cv2.destroyAllWindows()
 
+# affichage de l'image avec la librairie opencv    
+# imshow_cv(fruits_bgr, "fruits_bgr")
+
 # %% [markdown]
 # ### 6. Convertir l'image en RGB pour l'afficher correctement avec Matplotlib
 # 
 # 1. Convertissez l'image en RGB en inversant directement les canaux de couleur à l'aide d'une manipulation des indices du tableau en Python.  
 # 2. Alternativement, utilisez la fonction `cv2.cvtColor` pour effectuer la conversion. Consultez la documentation pour plus de détails.
 # 
+
+# %%
+# 1. Conversion des images BGR -> RGB, en utilisant la fonction opencv
+fruits_rgb = fruits_bgr[...,[2,1,0]]
+implot(fruits_rgb, "Conversion des images BGR -> RGB par indices")
+
+# %%
+# 2. Conversion des images BGR -> RGB, en utilisant la fonction opencv
+fruits_rgb_cv = cv2.cvtColor(fruits_bgr, cv2.COLOR_BGR2RGB)
+implot(fruits_rgb_cv, "Conversion des images BGR -> RGB par opencv")
 
 # %% [markdown]
 # ### 7. Afficher les images des différents canaux de couleurs (Rouge, Vert, Bleu)
@@ -90,6 +138,20 @@ def imshow_cv(image,  winname = 'Image OpenCV', swapBR = False):
 # 4. Affichez également les différents canaux pour les encodages LAB et HSV. Utilisez `cv2.cvtColor` pour effectuer la conversion vers les encodages LAB et HSV.
 # 
 
+# %%
+fruits_rouge = fruits_rgb[...,0]
+fruits_vert = fruits_rgb[...,1]     
+fruits_bleu = fruits_rgb[...,2]
+
+implot(fruits_rouge, "Fruits Canal Rouge")
+implot(fruits_vert, "Fruits Canal Vert")
+implot(fruits_bleu, "Fruits Canal Bleu")
+
+# %%
+# Concaténation horizontale des différents canaux couleurs dans une seule image
+fruits_concat = cv2.hconcat([fruits_rouge, fruits_vert, fruits_bleu])
+implot(fruits_concat, "Fruits - concaténation horizontale des canaux RGB")
+
 # %% [markdown]
 # ### 8. Opérations élémentaires entre images en niveaux de gris
 # 
@@ -98,6 +160,16 @@ def imshow_cv(image,  winname = 'Image OpenCV', swapBR = False):
 # 3. Les résultats obtenus sont-ils cohérents ? Quelle est la dynamique ou la profondeur (depth) de l'image ? Vous pouvez vérifier cela en affichant la propriété `dtype` de l'image avec l'instruction `nom_de_mon_image.dtype`.
 # 4. Modifiez la profondeur des images pour effectuer les calculs en utilisant des valeurs flottantes en 32 bits. Pour ce faire, utilisez la méthode NumPy `mon_image.astype(np.float32)`.
 # 
+
+# %%
+image_rv = fruits_rouge + fruits_vert
+implot(image_rv, "Canal rouge + canal vert - opérateur +")
+print("fruits_rouge profondeur :", image_rv.dtype)
+
+# %%
+image_rv_cv = cv2.add(fruits_rouge,fruits_vert)
+implot(image_rv_cv, "Canal rouge + canal vert avec opencv")
+print("fruits_rouge profondeur :", image_rv_cv.dtype)
 
 # %% [markdown]
 # ### 9. Opérations élémentaires entre images couleurs

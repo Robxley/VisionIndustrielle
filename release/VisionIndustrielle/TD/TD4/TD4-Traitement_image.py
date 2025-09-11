@@ -32,6 +32,9 @@ import numpy as np
 # 2. Utilisez la fonction `cv2.imread` pour lire l'image située à `"../images/fruits.jpg"` en mode niveaux de gris, en utilisant le paramètre `cv2.IMREAD_GRAYSCALE`.
 # 3. Affichez les dimensions de l'image à l'aide de l'attribut `.shape` et identifiez les indices correspondant aux lignes et colonnes.
 # 
+image_path = "images/fruits.jpg"
+image = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE);
+print("shape:", image.shape)
 
 # %% [markdown]
 # ### 3. Affichage d'une image avec le package Matplotlib
@@ -40,7 +43,15 @@ import numpy as np
 # 2. Expérimentez en modifiant le paramètre `cmap="gray"` pour observer les effets sur l'affichage (référez-vous à la documentation).
 # 3. Créez une fonction nommée `implot` afin de simplifier l'affichage des images dans vos analyses futures.
 # 
+def imshow(image):
+    from matplotlib import pyplot as plt
+    plt.imshow(image, cmap="gray")
+    plt.title('Fruits')
+    plt.axis('off')
+    plt.show()
 
+
+imshow(image)
 # %% [markdown]
 # ### 4. Image en couleur
 # 
@@ -51,6 +62,10 @@ import numpy as np
 # 5. Documentez-vous sur ce qu'est un filtre de Bayer et son rôle dans les capteurs d'image.
 # 
 
+image_path = "images/fruits.jpg"
+image_brg = cv2.imread(image_path, cv2.IMREAD_UNCHANGED);
+print("color image shape:", image_rgb.shape)
+imshow(image_brg)
 # %% [markdown]
 # ### 5. Affichage de l'image en couleur avec OpenCV
 # 
@@ -58,6 +73,17 @@ import numpy as np
 # 2. Créez une fonction nommée `imshow_cv` afin de simplifier l'affichage des images pour les prochaines manipulations.
 # 
 # 
+
+# Using cv2.imshow() method
+# Displaying the image
+#cv2.imshow("ma fenetre", image_rgb)
+
+# waits for user to press any key
+# (this is necessary to avoid Python kernel form crashing)
+#cv2.waitKey(0)
+
+# closing all open windows
+#cv2.destroyAllWindows()
 
 # %%
 def imshow_cv(image,  winname = 'Image OpenCV', swapBR = False):
@@ -81,6 +107,11 @@ def imshow_cv(image,  winname = 'Image OpenCV', swapBR = False):
 # 2. Alternativement, utilisez la fonction `cv2.cvtColor` pour effectuer la conversion. Consultez la documentation pour plus de détails.
 # 
 
+image_rgb =cv2.cvtColor(image_brg, cv2.COLOR_BGR2RGB)
+imshow(image_rgb)
+print("color image shape:", image_rgb.shape) # image_rgb.shape
+
+
 # %% [markdown]
 # ### 7. Afficher les images des différents canaux de couleurs (Rouge, Vert, Bleu)
 # 
@@ -89,6 +120,17 @@ def imshow_cv(image,  winname = 'Image OpenCV', swapBR = False):
 # 3. Affichez l'image concaténée.
 # 4. Affichez également les différents canaux pour les encodages LAB et HSV. Utilisez `cv2.cvtColor` pour effectuer la conversion vers les encodages LAB et HSV.
 # 
+canal_r = image_rgb[...,0]
+print("canal rouge shape:", canal_r.shape)
+imshow(canal_r)
+
+canal_g = image_rgb[...,1]
+print("canal vert shape:", canal_g.shape)
+imshow(canal_r)
+
+canal_b = image_rgb[...,2]
+print("canal bleu shape:", canal_b.shape)
+imshow(canal_r)
 
 # %% [markdown]
 # ### 8. Opérations élémentaires entre images en niveaux de gris
