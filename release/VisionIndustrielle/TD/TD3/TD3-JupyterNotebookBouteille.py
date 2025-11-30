@@ -4,8 +4,8 @@
 # Vous devez proposer un système de vision permettant d’inspecter une gourde décorée en rotation à l’aide d’une caméra linéaire. La cadence de production est de 5 gourdes en 3 secondes. La gourde fait 25 cm et a un diamètre maximal de φ = 45mm. Le plus petit élément à détecter est de 0.15mm.
 
 # %%
-# variable en mm et en sec
-cadence_nb = 5              # nombre de gourdes (scannées sur 3 secondes)
+# variables en mm et en sec
+cadence_nb = 5              # nombre de gourdes (scannées en 3 secondes)
 cadence_sec = 3             # 3 secondes
 dim_gourde_mm = 250         # hauteur de la gourde (25 cm)
 diameter_mm = 45            # diamètre de la gourde
@@ -20,11 +20,11 @@ perimeter_mm = diameter_mm * math.pi        # le périmètre = 2 * rayon * pi = 
 print("Périmètre max (mm):", perimeter_mm)
 
 # %% [markdown]
-# **Question 2** : Quelle est la vitesse de déplacement d’un élément du motif de la gourde ?
+# **Question 2** : Quelle est la vitesse de déplacement d'un élément du motif de la gourde ?
 
 # %%
 # vitesse = distance / temps
-temps_de_scan =  cadence_sec / cadence_nb                                   # temps de scan d'une bouteille
+temps_de_scan = cadence_sec / cadence_nb  # temps de scan d'une gourde
 print("Le temps de scan pour une gourde est de (sec):", temps_de_scan)
 vitesse_mms = perimeter_mm / temps_de_scan
 print("La vitesse de déplacement des éléments de surface est de (mm/s):", vitesse_mms)
