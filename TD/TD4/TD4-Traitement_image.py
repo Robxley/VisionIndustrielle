@@ -2,22 +2,22 @@
 # # TD : Vision par ordinateur : traitement d’image
 
 # %% [markdown]
-# ### 1. Prérequis
+# ### Prérequis
 # 
-# Préparation d’un environnement de travail Python et installation du paquet OpenCV :  
-# Documentation : [Documentation officielle Python](https://docs.python.org/fr/3/tutorial/venv.html)
+# Préparation d’un environnement Python et installation du paquet OpenCV :  
+# [Documentation officielle](https://docs.python.org/fr/3/tutorial/venv.html)
 # 
-# 1. Créez un dossier 📂 *VisionIndustrielle* (par exemple sur votre bureau) et ouvrez ce dossier.
-# 2. Faites **Shift + clic droit** à l'intérieur du dossier 📂 *VisionIndustrielle*. 
-# 3. Cliquez sur `Ouvrir la fenêtre PowerShell ici`.
-# 4. Exécutez les commandes suivantes pour préparer un environnement Python dédié au traitement d’images :
+# 1. Créez un dossier 📂 **VisionIndustrielle** (par exemple sur le bureau) et ouvrez-le.
+# 2. Faites `Shift + clic droit` dans ce dossier.
+# 3. Choisissez `Ouvrir la fenêtre PowerShell ici`.
+# 4. Exécutez les commandes suivantes pour préparer l’environnement Python :
 # 
-# ```bash
-# > python --version                                 # Vérifier que la version de Python est 3.11
-# > python -m venv opencv_env                        # Création d'un environnement virtuel nommé "opencv_env"
-# > ./opencv_env/Scripts/activate                    # Activation de l'environnement virtuel
-# > python -m pip install --upgrade pip              # Mise à jour de l'installeur de paquets
-# > pip install jupyter opencv-python matplotlib     # Installation des bibliothèques OpenCV, Matplotlib et Jupyter
+# ```powershell
+# python --version
+# python -m venv .venv
+# .\.venv\Scripts\activate
+# python -m pip install --upgrade pip
+# pip install jupyter opencv-python matplotlib ipykernel
 # ```
 
 # %%
