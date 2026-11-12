@@ -1,4 +1,8 @@
 # %% [markdown]
+# ## TD2 - Les objectifs des caméras 
+# ***(correction des questions du cours sur les objectifs des caméras)***
+# 
+# 
 # ### Problème 1 : Il est loin mon sapin ?
 # 
 # Mon sapin mesure 18m de hauteur.  
