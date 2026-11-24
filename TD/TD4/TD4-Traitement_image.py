@@ -2,7 +2,7 @@
 # # TD : Vision par ordinateur : traitement d’image
 
 # %% [markdown]
-# ### Prérequis
+# ### 1. Prérequis
 # 
 # Préparation d’un environnement Python et installation du paquet OpenCV :  
 # [Documentation officielle](https://docs.python.org/fr/3/tutorial/venv.html)
@@ -28,7 +28,7 @@ import numpy as np
 # %% [markdown]
 # ### 2. Lecture d'une image en niveaux de gris
 # 
-# 1. Consultez la documentation de la fonction `cv2.imread` dans la documentation d'OpenCV.
+# 1. Consultez la documentation de la fonction `cv2.imread` d'OpenCV.
 # 2. Utilisez la fonction `cv2.imread` pour lire l'image située à `"../images/fruits.jpg"` en mode niveaux de gris, en utilisant le paramètre `cv2.IMREAD_GRAYSCALE`.
 # 3. Affichez les dimensions de l'image à l'aide de l'attribut `.shape` et identifiez les indices correspondant aux lignes et colonnes.
 # 
@@ -47,7 +47,7 @@ import numpy as np
 # 1. Utilisez la fonction `cv2.imread` pour lire l'image située à `"../images/fruits.jpg"` avec le paramètre `cv2.IMREAD_UNCHANGED`.
 # 2. Affichez les dimensions de l'image à l'aide de l'attribut `.shape` et identifiez les indices correspondant aux lignes, colonnes et canaux de couleur.
 # 3. Affichez l'image en couleur en utilisant la fonction `implot`.
-# 4. Recherchez des informations sur les différents encodages des images couleur sur ordinateur (par exemple : RGB, BGR, LAB, HSV, etc.).
+# 4. Recherchez des informations sur les différents encodages des images en couleur sur un ordinateur (par exemple : RGB, BGR, LAB, HSV, etc.).
 # 5. Documentez-vous sur ce qu'est un filtre de Bayer et son rôle dans les capteurs d'image.
 # 
 
@@ -60,15 +60,15 @@ import numpy as np
 # 
 
 # %%
-def imshow_cv(image,  winname = 'Image OpenCV', swapBR = False):
+def imshow_cv(image, winname='Image OpenCV', swapBR=False):
     if swapBR:
         image = image[...,[2,1,0]]
     cv2.imshow(winname, image)
-    while(True):        # boucle d'affichage de l'image
+    while True:        # boucle d'affichage de l'image
         k = cv2.waitKey(60)
-        if not cv2.getWindowProperty(winname, cv2.WND_PROP_VISIBLE):  # when window is close get out of the loop
+        if not cv2.getWindowProperty(winname, cv2.WND_PROP_VISIBLE):  # si la fenêtre est fermée, on sort de la boucle
             break
-        if k == -1:  # if no key was pressed, -1 is returned
+        if k == -1:  # si aucune touche n’est pressée, -1 est retourné
             continue
         else:
             break
@@ -82,10 +82,10 @@ def imshow_cv(image,  winname = 'Image OpenCV', swapBR = False):
 # 
 
 # %% [markdown]
-# ### 7. Afficher les images des différents canaux de couleurs (Rouge, Vert, Bleu)
+# ### 7. Afficher les images des différents canaux de couleur (Rouge, Vert, Bleu)
 # 
 # 1. Affichez les canaux de couleur rouge, vert et bleu séparément.
-# 2. Concaténez les images des canaux dans une seule image ayant des dimensions `(3 * largeur x hauteur)` ou `(largeur x 3 * hauteur)`. Vous pouvez utiliser `np.vstack` ou `cv2.hconcat` pour cela.
+# 2. Concaténez les images des canaux dans une seule image : par exemple `(3 × hauteur, largeur)` en empilant verticalement avec `np.vstack`, ou `(hauteur, 3 × largeur)` en concaténant horizontalement avec `np.hstack` ou `cv2.hconcat`.
 # 3. Affichez l'image concaténée.
 # 4. Affichez également les différents canaux pour les encodages LAB et HSV. Utilisez `cv2.cvtColor` pour effectuer la conversion vers les encodages LAB et HSV.
 # 
@@ -95,15 +95,15 @@ def imshow_cv(image,  winname = 'Image OpenCV', swapBR = False):
 # 
 # 1. Sélectionnez le canal rouge, vert et/ou bleu d'une image.
 # 2. Testez des opérations élémentaires telles que l'addition, la soustraction, la multiplication entre les canaux, en utilisant soit les opérateurs de NumPy (`+`, `-`, `/`, `*`), soit les fonctions d'OpenCV (`cv2.add`, `cv2.subtract`, `cv2.multiply`, `cv2.divide`, etc.).
-# 3. Les résultats obtenus sont-ils cohérents ? Quelle est la dynamique ou la profondeur (depth) de l'image ? Vous pouvez vérifier cela en affichant la propriété `dtype` de l'image avec l'instruction `nom_de_mon_image.dtype`.
+# 3. Les résultats obtenus sont-ils cohérents ? Quelle est la dynamique ou la profondeur (depth) de l'image ? Vous pouvez vérifier cela en affichant l'attribut `dtype` de l'image avec l'instruction `nom_de_mon_image.dtype`.
 # 4. Modifiez la profondeur des images pour effectuer les calculs en utilisant des valeurs flottantes en 32 bits. Pour ce faire, utilisez la méthode NumPy `mon_image.astype(np.float32)`.
 # 
 
 # %% [markdown]
-# ### 9. Opérations élémentaires entre images couleurs
+# ### 9. Opérations élémentaires entre images en couleur
 # 
-# 1. Chargez deux images couleurs. Créez une fonction permettant de lire une image au format BGR avec `cv2.imread` et le paramètre `cv2.IMREAD_UNCHANGED`, tout en la convertissant automatiquement au format RGB pour simplifier les affichages futurs.
-# 2. Testez des opérations élémentaires sur les images couleurs, telles que l'addition, la soustraction, la multiplication ou la division. Utilisez soit les opérateurs de NumPy (`+`, `-`, `/`, `*`), soit les fonctions d'OpenCV (`cv2.add`, `cv2.subtract`, `cv2.multiply`, `cv2.divide`, `cv2.addWeighted`, etc.).
+# 1. Chargez deux images en couleur. Créez une fonction permettant de lire une image au format BGR avec `cv2.imread` et le paramètre `cv2.IMREAD_UNCHANGED`, tout en la convertissant automatiquement au format RGB pour simplifier les affichages futurs.
+# 2. Testez des opérations élémentaires sur les images en couleur, telles que l'addition, la soustraction, la multiplication ou la division. Utilisez soit les opérateurs de NumPy (`+`, `-`, `/`, `*`), soit les fonctions d'OpenCV (`cv2.add`, `cv2.subtract`, `cv2.multiply`, `cv2.divide`, `cv2.addWeighted`, etc.).
 # 3. Testez des opérateurs binaires sur les images, comme ceux proposés par NumPy (`np.bitwise_and`, `np.bitwise_or`, `np.bitwise_xor`) ou OpenCV (`cv2.bitwise_and`, `cv2.bitwise_or`, `cv2.bitwise_xor`).
 # 
 
@@ -115,13 +115,13 @@ def imshow_cv(image,  winname = 'Image OpenCV', swapBR = False):
 # 
 
 # %% [markdown]
-# ### 11. Fonction de génération aléatoire de bruit gaussien :
+# ### 11. Fonction de génération aléatoire de bruit gaussien
 
 # %%
 # fonction pour ajouter artificiellement du bruit à une image
 def add_noise(img, mean = 0, stddev = 36, threshold = None):
     noise = np.zeros(img.shape, np.uint8)
-    cv2.randn(noise, np.asarray([mean,mean,mean]),  np.asarray([stddev,stddev,stddev]))
+    cv2.randn(noise, np.asarray([mean, mean, mean]), np.asarray([stddev, stddev, stddev]))
     if threshold:
         noise = np.where(noise>threshold, noise, 0)
     noisy_img = cv2.add(img, noise)
@@ -145,10 +145,10 @@ def add_noise(img, mean = 0, stddev = 36, threshold = None):
 # 
 
 # %% [markdown]
-# ### 14. Fonction de seuillage / Segmentation
+# ### 14. Fonctions de seuillage et de segmentation
 # 
-# 1. Additionnez les canaux R, G et B de l'image résultant de l'application du gradient.  
-# 2. Appliquez un seuillage sur une image en niveaux de gris (ou sur l'un des canaux R, G ou B d'une image) à l'aide des fonctions suivantes :  
+# 1. Additionnez les canaux R, G et B de l'image résultante de l'application du gradient.  
+# 2. Appliquez un seuillage sur une image en niveaux de gris (ou sur l'un des canaux R, G ou B d'une image en couleur) à l'aide des fonctions suivantes :  
 #    - `cv2.threshold`  
 #    - `cv2.adaptiveThreshold`  
 #    - `cv2.inRange`
@@ -173,7 +173,7 @@ def add_noise(img, mean = 0, stddev = 36, threshold = None):
 # 
 
 # %% [markdown]
-# ### 17. Manipulation des images  
+# ### 17. Manipulations des images  
 # 
 # 1. Testez la fonction `cv2.resize`.  
 # 2. Testez la fonction `cv2.pyrDown`.  
@@ -209,13 +209,13 @@ def add_noise(img, mean = 0, stddev = 36, threshold = None):
 # 
 
 # %% [markdown]
-# ### 21. Application à la détection de défaut : Contrôle d'ébréchure
+# ### 21. Application à la détection de défauts : contrôle d'ébréchure
 # 
-# 1. Charger l'image ```"../images/controle-ébrechure.jpg"``` et l'image ```"../images/controle-ébrechure_2.jpg"```.
-# 2. Effectuer la différence entre ces deux images.
-# 3. Appliquer un seuillage sur la différence des deux images.
-# 4. Compter le nombre de pixels différents dans l'image seuillée avec la fonction ```cv2.countNonZero```.
-# 5. Réaliser la même opération, mais en ajoutant du bruit dans les images à l'aide de la fonction ```add_noise```.
+# 1. Chargez l'image `"../images/controle-ébrechure.jpg"` et l'image `"../images/controle-ébrechure_2.jpg"`.
+# 2. Effectuez la différence entre ces deux images.
+# 3. Appliquez un seuillage sur la différence des deux images.
+# 4. Comptez le nombre de pixels non nuls dans l'image seuillée à l'aide de la fonction `cv2.countNonZero`.
+# 5. Réalisez la même opération, mais en ajoutant du bruit aux images à l'aide de la fonction `add_noise`.
 # 
 
 
