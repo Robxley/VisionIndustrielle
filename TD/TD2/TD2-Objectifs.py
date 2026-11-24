@@ -42,7 +42,7 @@ print("Le sapin est situé à en (m): ", distance_OA / 1000)
 # %% [markdown]
 # ### Problème 2 : Boîte avec QR CODE
 # 
-# Une boite de dimension 40cm x 30cm est scannée sur sa largeur de 30cm. 
+# Une boîte de dimension 40cm x 30cm est scannée sur sa largeur de 30cm. 
 # Il faut au moins 750 pixels pour respecter la précision nécessaire à la lecture du QRCode.  
 # La hauteur maximale disponible au dessus du carton est de 120cm.  
 # La documentation du capteur renseigne que la taille d'un pixel est de 3,40µm (0.0034mm).  

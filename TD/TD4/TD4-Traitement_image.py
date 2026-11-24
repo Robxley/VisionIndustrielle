@@ -211,7 +211,7 @@ def add_noise(img, mean = 0, stddev = 36, threshold = None):
 # %% [markdown]
 # ### 21. Application à la détection de défaut : Contrôle d'ébréchure
 # 
-# 1. Charger l'image ```"../images/controle-ebrechure.jpg"``` et l'image ```"../images/controle-ebrechure_2.jpg"```.
+# 1. Charger l'image ```"../images/controle-ébrechure.jpg"``` et l'image ```"../images/controle-ébrechure_2.jpg"```.
 # 2. Effectuer la différence entre ces deux images.
 # 3. Appliquer un seuillage sur la différence des deux images.
 # 4. Compter le nombre de pixels différents dans l'image seuillée avec la fonction ```cv2.countNonZero```.

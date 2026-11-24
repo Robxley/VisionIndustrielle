@@ -81,7 +81,7 @@ print("Temps d'expo max",  temps_expo_max)
 dim_pixel_mm =  7 / 1000    # par exemple pour une caméra 4k dont la taille des pixels est de 7µm -> en millimètre 7 / 1000
 print("Taille des pixels (mm): ", dim_pixel_mm)
 
-capteur_pixels = 4000   # en 4k le capteur à 4096 pixels. On peut prend 4000 pour se laisser une marge d'erreur (en cas de vibrations, positionnement de la caméra etc...).
+capteur_pixels = 4000   # en 4k le capteur à 4096 pixels. On peut prendre 4000 pour se laisser une marge d'erreur (en cas de vibrations, positionnement de la caméra etc...).
 grandissement =  (dim_pixel_mm*capteur_pixels) / dim_gourde_mm
 print("Le grandissement pour {} pixels est de : {}".format(capteur_pixels, grandissement))
 
@@ -103,7 +103,7 @@ for focale in [6, 8, 12]:
     print_distance_de_travail(focale, grandissement)
 
 # %% [markdown]
-# **Question 10** : Vous faite un premier test avec un temps d’exposition de valeur Ti = 3.10-4. La valeur maximale de l’image est alors de 45. En supposant que la réponse de la caméra est linéaire de combien vous devait augmenter le temps d’exposition pour exploiter la dynamique complète du capteur 8bits.
+# **Question 10** : Vous faites un premier test avec un temps d’exposition de valeur Ti = 3×10⁻⁴. La valeur maximale de l’image est alors de 45. En supposant que la réponse de la caméra est linéaire de combien vous devez augmenter le temps d’exposition pour exploiter la dynamique complète du capteur 8 bits.
 
 # %%
 ti = 1.5e-4    
@@ -116,7 +116,7 @@ print("Temps d'exposition max :", temps_expo_max)
 
 
 # %% [markdown]
-# **Question 11** : Est-ce  qu’il  est  possible  d’exploiter  complétement  la  dynamique  du  capteur  tout  en 
+# **Question 11** : Est-ce qu’il est possible d’exploiter complètement la dynamique du capteur tout en 
 # respectant les cadences de production ? Si non, proposer une solution.
 
 # %%

@@ -29,7 +29,7 @@ dim2_box_cm = 30        # largeur 30 cm
 box_gap_cm = 5          # distance entre les boîtes 5 cm
 
 #Informations sur le QR code
-dim_qr_code_cm = 2      # taille du QR code 4x4 cm²
+dim_qr_code_cm = 2      # taille du QR code 2x2 cm²
 qr_code_grid = 25       # grille 25x25
 
 #Cadence
@@ -76,7 +76,7 @@ pixels_v2 = pixels_v2 * coef_C                     # on multiplie ce nombre de p
 print("Nombre de pixels pour le capteur (v2): ", pixels_v2)
 
 # %% [markdown]
-# **Question 4** : Combien de lignes (ou images) sont nécessaires pour scanner une boite.
+# **Question 4** : Combien de lignes (ou images) sont nécessaires pour scanner une boîte.
 
 # %%
 # calcul similaire à la question 3 sur la longueur de la boîte.
@@ -86,7 +86,7 @@ print("Nombre de lignes nécessaires au scan d'une boîte (en tenant compte du f
 
 
 # %% [markdown]
-# **Question 5** : Combien de temps faut-il pour scanner une boite complète ?
+# **Question 5** : Combien de temps faut-il pour scanner une boîte complète ?
 
 # %%
 # formule: vitesse = distance / temps -> temps = distance / vitesse
@@ -147,19 +147,19 @@ else:
 # Puis, ré-executer l'ensemble des cellules de codes en cliquant sur ```>> Exécuter Tout``` (en haut de votre Notebook).
 # Vous devez obtenir à la question 8:  
 # 
-# ```Le temps écoulé entre deux boites est plus long que le temps de calcul. Tout est OK ! 😊👍```
+# ```Le temps écoulé entre deux boîtes est plus long que le temps de calcul. Tout est OK ! 😊👍```
 # 
 # 
 # 2. On peut poser le QR Code toujours au même endroit sur la boîte.  
 # Le temps restant pour le calcul est alors le temps écoulé entre 2 QR Code.  
 # Soit le temps pour parcourir la distance suivante :  
 # 
-# ```l'espace entre 2 boites (5cm) + la longueur d'une boite (40cm) - la taille du QR Code (2cm)```.
+# ```l'espace entre 2 boîtes (5cm) + la longueur d'une boîte (40cm) - la taille du QR Code (2cm)```.
 # 
 # 3. Utiliser une caméra matricielle qui se déclenche (à l'aide d'un capteur/trigger) lorsque la caméra est positionnée au milieu de la boîte.
 # Soit le temps pour parcourir la distance suivante :  
 # 
-# ```l'espace entre 2 boites (5cm) + la longueur d'une boite (40cm)```.
+# ```l'espace entre 2 boîtes (5cm) + la longueur d'une boîte (40cm)```.
 # 
 # Un schéma peut aider à visualiser ces différentes solutions.
 # 
